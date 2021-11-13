@@ -34,3 +34,10 @@ Caso essa resposta aconteça, ela irá retorna a listagem de todos os games. Exe
 
 #### Falha na autenticação 401
 Caso essa resposta aconteça, isso significa que aconteceu alguma falha durante o processo de autenticação. Motivos: token inválido, token incorreto, token expirado.
+Exemplo de resposta: 
+```
+{
+    "err": "Token incorreto"
+}
+
+```
