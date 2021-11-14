@@ -38,8 +38,54 @@ Exemplo de resposta:
 }
 ```
 
+###Post /registro
+Esse endpoint é o responsável por realizar o processo de registro do usuário no banco de dados.
+#### Parametros
+Emai, nome e senha.
 
 
+Exemplo:
+
+```
+   {    
+    "nome": "Administrador",
+    "email": "adm@hotmail.com",
+    "senha": "123456789"
+}
+```
+
+
+
+#### Respostas
+##### OK! 201
+Caso essa resposta aconteça, o usuário será cadastrado no banco de dados.
+```
+{
+    "user": "Usuário cadastrado"
+}
+```
+
+#### Falha na autenticação 401
+Caso essa resposta aconteça, significa que já existe um usuário cadastrado com esses dados no sistema.
+Exemplo de resposta: 
+```
+{
+    "err": "Usuário com credencias já registrada"
+}
+```
+#### Requisição inválida 400
+Caso essa resposta aconteça, significa que há algum campo inválido.
+Exemplo de resposta: 
+```
+ {
+    "erros": [
+        "Por favor, verifique o campo e-mail",
+        "A senha precisa de pelomenos 5 caracteres",
+        "O nome não pode ser vazio"
+    ]
+}
+
+```
 
 
 ### GET /jogos
@@ -49,6 +95,46 @@ Nenhum
 #### Respostas
 ##### OK! 200
 Caso essa resposta aconteça, ela irá retorna a listagem de todos os games. Exemplo:
+```
+[
+    {
+        "id": 10,
+        "titulo": "Ragnarok",
+        "preco": 105,
+        "ano": 2015
+    },
+    {
+        "id": 12,
+        "titulo": "League of legends",
+        "preco": 10,
+        "ano": 2012
+    },
+    {
+        "id": 14,
+        "titulo": "Call of duty",
+        "preco": 250,
+        "ano": 2021
+    }
+]
+```
+
+#### Falha na autenticação 401
+Caso essa resposta aconteça, isso significa que aconteceu alguma falha durante o processo de autenticação. Motivos: token inválido, token incorreto, token expirado.
+Exemplo de resposta: 
+```
+{
+    "err": "Token incorreto"
+}
+```
+
+### Post /jogos
+Esse endpoint é o responsável por inserir jogos no banco de dados.
+
+#### Parametros
+Nenhum
+#### Respostas
+##### OK! 201
+Caso essa resposta aconteça, ele irá inserir os dados no sistema. Exemplo:
 ```
 [
     {
