@@ -38,7 +38,7 @@ Exemplo de resposta:
 }
 ```
 
-###Post /registro
+### Post /registro
 Esse endpoint é o responsável por realizar o processo de registro do usuário no banco de dados.
 #### Parametros
 Emai, nome e senha.
