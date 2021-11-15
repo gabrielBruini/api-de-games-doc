@@ -14,7 +14,7 @@ Exemplo:
 ```
 {
     "email": "adm@teste.com.br",
-    "senha": 123
+    "senha": 123456789
 }
 ```
 
@@ -35,6 +35,15 @@ Exemplo de resposta:
 ```
 {
     "err": "Credenciais inválidas"
+}
+```
+
+#### Falha na autenticação 400
+Caso essa resposta aconteça, isso significa que não existem usuários com esses dados no sistema.
+Exemplo de resposta: 
+```
+{
+    "err": "Usuário não existe"
 }
 ```
 
@@ -131,38 +140,81 @@ Exemplo de resposta:
 Esse endpoint é o responsável por inserir jogos no banco de dados.
 
 #### Parametros
-Nenhum
+Titulo, preço e ano.
+
 #### Respostas
 ##### OK! 201
 Caso essa resposta aconteça, ele irá inserir os dados no sistema. Exemplo:
 ```
-[
-    {
-        "id": 10,
-        "titulo": "Ragnarok",
-        "preco": 105,
-        "ano": 2015
-    },
-    {
-        "id": 12,
-        "titulo": "League of legends",
-        "preco": 10,
-        "ano": 2012
-    },
-    {
-        "id": 14,
-        "titulo": "Call of duty",
-        "preco": 250,
-        "ano": 2021
-    }
-]
+{
+    "Dados": "Dados inseridos no sistema"
+}
+
 ```
 
-#### Falha na autenticação 401
-Caso essa resposta aconteça, isso significa que aconteceu alguma falha durante o processo de autenticação. Motivos: token inválido, token incorreto, token expirado.
+#### Falha na inserção de dados 400
+Caso essa resposta aconteça, isso significa que há algum dado inserido de forma incorreta.
 Exemplo de resposta: 
 ```
 {
-    "err": "Token incorreto"
+   {
+    "erros": [
+        {
+            "msg": "O título não pode ser vazio",
+            "param": "titulo",
+            "location": "body"
+        }
+    ]
+}
+}
+```
+
+### Delete /jogos/:id
+Esse endpoint é o responsável por remover jogos no banco de dados.
+
+#### Parametros
+id.
+
+#### Respostas
+##### OK! 201
+Caso essa resposta aconteça, ele irá remover os dados no sistema. Exemplo:
+```
+{
+    "Servidor": "Dados removidos do banco de dados"
+}
+
+```
+
+#### Falha na inserção de dados 404
+Caso essa resposta aconteça, isso significa que há algum dado passado de forma incorreta.
+Exemplo de resposta: 
+```
+{
+    "Servidor": "Dados inválidos ou inexistentes no banco de dados"
+}
+```
+
+### Put /jogos/:id
+Esse endpoint é o responsável por Atualizar jogos no banco de dados.
+
+#### Parametros
+id.
+
+#### Respostas
+##### OK! 201
+Caso essa resposta aconteça, ele irá remover os dados no sistema. Exemplo:
+```
+{
+    "Servidor": "Dados removidos do banco de dados"
+}
+
+```
+
+#### Falha na inserção de dados 404
+Caso essa resposta aconteça, isso significa que há algum dado passado de forma incorreta.
+Exemplo de resposta: 
+```
+{
+    "Servidor": "Dados inválidos ou inexistentes no banco de dados"
 }
 ```
