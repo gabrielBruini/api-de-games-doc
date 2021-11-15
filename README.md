@@ -201,20 +201,28 @@ Esse endpoint é o responsável por Atualizar jogos no banco de dados.
 id.
 
 #### Respostas
-##### OK! 201
-Caso essa resposta aconteça, ele irá remover os dados no sistema. Exemplo:
+##### OK! 200
+Caso essa resposta aconteça, os dados serão alterado no banco de dados. Exemplo:
 ```
 {
-    "Servidor": "Dados removidos do banco de dados"
+    "Servidor": "Dados Atualizados"
 }
 
 ```
 
-#### Falha na inserção de dados 404
-Caso essa resposta aconteça, isso significa que há algum dado passado de forma incorreta.
+#### Falha na procura de dados
+Caso essa resposta aconteça, isso significa que há algum dado passado de forma incorreta, ou inexistente.
 Exemplo de resposta: 
 ```
 {
-    "Servidor": "Dados inválidos ou inexistentes no banco de dados"
+    "Servidor": "Os dados para atualizar não está no banco de dados"
+}
+```
+#### Falha na procura de dados
+Caso essa resposta aconteça, isso significa que algum dado passado, foi inválido igual a uma string.
+Exemplo de resposta: 
+```
+{
+    "Servidor": "A inserção de dados numéricos como paramêtros é necessária"
 }
 ```
