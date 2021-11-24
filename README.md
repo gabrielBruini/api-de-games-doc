@@ -1,6 +1,8 @@
 # API de Games
 
-##Endpoints
+Essa é uma API feita com C.R.U.D para a inserir e consultar jogos.
+
+### Endpoints
 
 ### Post /autenticar
 Esse endpoint é o responsável por realizar o processo de login.
